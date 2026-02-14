@@ -14,8 +14,11 @@ body {
     font-family: 'Cormorant Garamond', serif;
     color: #3d2f25;
     line-height: 1.9;
+    position: relative;
+    overflow-x: hidden;
 }
 
+/* Main section */
 .section {
     max-width: 800px;
     margin: auto;
@@ -45,8 +48,10 @@ h1 {
     margin-top: 50px;
     text-align: right;
     font-style: italic;
+    font-family: 'Playfair Display', serif;
 }
 
+/* Image */
 .photo {
     text-align: center;
     margin-top: 55px;
@@ -56,26 +61,36 @@ h1 {
     max-width: 320px;
     border-radius: 14px;
     box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+    transition: transform 0.5s, box-shadow 0.5s;
 }
 
+.photo img:hover {
+    transform: scale(1.07) rotate(-1deg);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Buttons */
 .buttons {
     text-align: center;
     margin-top: 45px;
 }
 
-button {
+.buttons button {
     padding: 12px 28px;
     font-size: 1rem;
     border: 1px solid #8b6f47;
     background: transparent;
     cursor: pointer;
     margin: 8px;
+    opacity: 0;
+    animation: fadeInButtons 2s forwards 3s;
 }
 
-button:hover {
+.buttons button:hover {
     background: #e7dccb;
 }
 
+/* Final message */
 #finalMessage {
     display: none;
     margin-top: 50px;
@@ -84,24 +99,54 @@ button:hover {
     font-style: italic;
 }
 
-/* Animation */
-@keyframes fadeIn {
-    to { opacity: 1; }
+/* Animations */
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes fadeInButtons { to { opacity: 1; } }
+
+/* Floating hearts */
+@keyframes floatHearts {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
 }
 
-/* PDF Print Styling */
+.heart {
+    position: absolute;
+    font-size: 1.2rem;
+    color: #e37c7c;
+    animation: floatHearts 6s linear infinite;
+    pointer-events: none;
+}
+
+/* PDF print styling */
 @media print {
-    button {
+    button, .heart, audio {
         display: none;
     }
-    body {
-        background: white;
-    }
+    body { background: white; }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    .section { padding: 50px 15px; }
+    h1 { font-size: 2rem; }
+    .letter { font-size: 1.1rem; }
+    .photo img { max-width: 90%; }
 }
 </style>
 </head>
 
 <body>
+
+<!-- Background music -->
+<audio autoplay loop>
+  <source src="soft-piano.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Floating hearts -->
+<span class="heart" style="left:10%;">❤️</span>
+<span class="heart" style="left:35%;">💖</span>
+<span class="heart" style="left:60%;">❤️</span>
+<span class="heart" style="left:80%;">💖</span>
 
 <div class="section">
 
@@ -112,7 +157,7 @@ button:hover {
     </div>
 
     <div class="letter">
-        To <Kananelo Lesia> </strong>,<br><br>
+        To Kananelo Lesia,<br><br>
 
         I don’t want to rush this.<br><br>
 
@@ -129,8 +174,7 @@ button:hover {
 
         There’s something easy about the way we talk.
         Something calm.
-        Something that feels like it could grow —
-        if we let it.<br><br>
+        Something that feels like it could grow — if we let it.<br><br>
 
         I enjoy learning you slowly.
         The way you think.
@@ -150,8 +194,8 @@ button:hover {
         Let’s see where this could lead.
     </div>
 
-    <div class="Teboho">
-        – <strong>[Your Name]</strong>
+    <div class="signature">
+        – Teboho
     </div>
 
     <!-- Image -->
@@ -173,7 +217,9 @@ button:hover {
 
 <script>
 function reveal() {
-    document.getElementById("finalMessage").style.display = "block";
+    const final = document.getElementById("finalMessage");
+    final.style.display = "block";
+    final.scrollIntoView({ behavior: "smooth" });
 }
 
 function downloadPDF() {
