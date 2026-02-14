@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let’s See Where This Could Lead</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: #f6f1eb;
+    font-family: 'Cormorant Garamond', serif;
+    color: #3d2f25;
+    line-height: 1.9;
+}
+
+.section {
+    max-width: 800px;
+    margin: auto;
+    padding: 90px 25px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+}
+
+.quote {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.4rem;
+    opacity: 0;
+    animation: fadeIn 3s forwards;
+}
+
+.letter {
+    margin-top: 45px;
+    font-size: 1.25rem;
+}
+
+.signature {
+    margin-top: 50px;
+    text-align: right;
+    font-style: italic;
+}
+
+.photo {
+    text-align: center;
+    margin-top: 55px;
+}
+
+.photo img {
+    max-width: 320px;
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 45px;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    border: 1px solid #8b6f47;
+    background: transparent;
+    cursor: pointer;
+    margin: 8px;
+}
+
+button:hover {
+    background: #e7dccb;
+}
+
+#finalMessage {
+    display: none;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* PDF Print Styling */
+@media print {
+    button {
+        display: none;
+    }
+    body {
+        background: white;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+
+    <h1>Let’s See Where This Could Lead</h1>
+
+    <div class="quote">
+        “Not everything needs a label to be meaningful.”
+    </div>
+
+    <div class="letter">
+        To <Kananelo Lesia> </strong>,<br><br>
+
+        I don’t want to rush this.<br><br>
+
+        I don’t want to pretend I already know what this will become,
+        or force it into a shape it hasn’t chosen yet.<br><br>
+
+        But I do know this —<br><br>
+
+        I look forward to your messages.<br>
+        I reread our conversations sometimes.<br>
+        I catch myself smiling at my phone more than I should.<br><br>
+
+        And that has to mean something.<br><br>
+
+        There’s something easy about the way we talk.
+        Something calm.
+        Something that feels like it could grow —
+        if we let it.<br><br>
+
+        I enjoy learning you slowly.
+        The way you think.
+        The things that matter to you.
+        The way your mind lights up when you care about something.<br><br>
+
+        I don’t know where this is going yet.<br><br>
+
+        But I know I’m curious.
+        I know I’m intentional.
+        And I know I’d like to keep discovering you.<br><br>
+
+        No pressure.<br>
+        No expectations.<br>
+        Just honesty.<br><br>
+
+        Let’s see where this could lead.
+    </div>
+
+    <div class="Teboho">
+        – <strong>[Your Name]</strong>
+    </div>
+
+    <!-- Image -->
+    <div class="photo">
+        <img src="image.jpg" alt="Memory">
+    </div>
+
+    <div class="buttons">
+        <button onclick="reveal()">Continue</button>
+        <button onclick="downloadPDF()">Download as PDF</button>
+    </div>
+
+    <div id="finalMessage">
+        Sometimes the best stories don’t start with certainty —<br>
+        they start with curiosity.
+    </div>
+
+</div>
+
+<script>
+function reveal() {
+    document.getElementById("finalMessage").style.display = "block";
+}
+
+function downloadPDF() {
+    window.print();
+}
+</script>
+
+</body>
+</html>
